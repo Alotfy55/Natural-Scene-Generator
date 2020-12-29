@@ -9,7 +9,7 @@ uniform sampler2D myTextureSampler;
 void main()
 {
 
-	//color = fragColor;
-	color = texture(myTextureSampler,Tex).rgb;
+	color = fragColor;
+	//color = texture(myTextureSampler,Tex).rgb;
 
 }
