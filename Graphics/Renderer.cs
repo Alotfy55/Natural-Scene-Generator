@@ -55,6 +55,7 @@ namespace Graphics
 
             Gl.glClearColor(0, 0, 0.4f, 1);
 
+            Terrain terrain = new Terrain(projectPath + "\\Textures\\noise_simplex.png");
 
             terrain.mapToArray();
             
@@ -88,27 +89,7 @@ namespace Graphics
             };
 
 
-            float[] ground = {
-                -5.0f, -1.0f, 5.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 5.0f, -1.0f, -5.0f,//2
-                 0,0,1,
-                 1,1,
-
-                -5.0f, -1.0f, -5.0f,
-                 0,0,1,
-                 1,0,
-
-                 5.0f, -1.0f, 5.0f,
-                 0,0,1,
-                 0,1,
-
-                -5.0f, -1.0f, 5.0f,//1
-                 0,0,1,
-                 0,0,
-
+           
 
             vertexBufferID1 = GPU.GenerateBuffer(sand_Arr);
             vertexBufferID2 = GPU.GenerateBuffer(grass_Arr);

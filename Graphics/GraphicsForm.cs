@@ -48,7 +48,8 @@ namespace Graphics
 
         private void simpleOpenGlControl1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            float speed = 0.3f;
+            float speed = 10f;
+            float angle = 1;
             if (e.KeyChar == 'a')
                 renderer.cam.Strafe(-speed);
             if (e.KeyChar == 'd')
@@ -61,6 +62,14 @@ namespace Graphics
                 renderer.cam.Fly(-speed);
             if (e.KeyChar == 'c')
                 renderer.cam.Fly(speed);
+            if (e.KeyChar == 'e')
+                renderer.cam.Yaw(-0.3f);
+            if (e.KeyChar == 'q')
+                renderer.cam.Yaw(0.3f);
+            if (e.KeyChar == 't')
+                renderer.cam.Pitch(-0.3f);
+            if (e.KeyChar == 'g')
+                renderer.cam.Pitch(0.3f);
         }
 
         float prevX, prevY;
@@ -84,6 +93,12 @@ namespace Graphics
             //label2.Text = "Delta y: " + delta;
             //MoveCursor();
         }
+
+        private void GraphicsForm_Load(object sender, System.EventArgs e)
+        {
+
+        }
+
         private void MoveCursor()
         {
             this.Cursor = new Cursor(Cursor.Current.Handle);

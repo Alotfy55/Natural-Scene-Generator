@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +12,12 @@ namespace Graphics
 
         public Bitmap heightMap;
         int [,] terrain;
-        float[] indices;
 
         float[] sand_Arr;
         float[] grass_Arr;
         float[] rock_Arr;
         float[] snow_Arr;
 
-        float[] colors;
         int initI, initJ;
 
         public Terrain(String path)
@@ -146,10 +145,6 @@ namespace Graphics
         public float[] get_snow_Arr()
         {
             return snow_Arr;
-        }
-        public float[] get_color_array()
-        {
-            return colors;
         }
 
 
