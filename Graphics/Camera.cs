@@ -17,10 +17,14 @@ namespace Graphics
         vec3 mUp;
         mat4 mViewMatrix;
         mat4 mProjectionMatrix;
+        public vec3 centerPos;
+
         public Camera()
         {
             Reset(0, 0, 5, 0, 0, 0, 0, 1, 0);
-            SetProjectionMatrix(45, 4 / 3, 0.1f, 100);
+
+            SetProjectionMatrix(45, 4 / 3, 0.1f, 500);
+
         }
 
         public vec3 GetLookDirection()
@@ -41,7 +45,7 @@ namespace Graphics
         public void Reset(float eyeX, float eyeY, float eyeZ, float centerX, float centerY, float centerZ, float upX, float upY, float upZ)
         {
             vec3 eyePos = new vec3(eyeX, eyeY, eyeZ);
-            vec3 centerPos = new vec3(centerX, centerY, centerZ);
+            centerPos = new vec3(centerX, centerY, centerZ);
             vec3 upVec = new vec3(upX, upY, upZ);
 
             mPosition = eyePos;
