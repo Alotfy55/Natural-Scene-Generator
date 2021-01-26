@@ -13,11 +13,20 @@ namespace Graphics
     class Renderer
     {
         Shader sh;
-
         uint vertexBufferID1;
+        uint vertexBufferID20;
+        uint vertexBufferID30;
+        uint vertexBufferID40;
+
+        
         uint vertexBufferID2;
         uint vertexBufferID3;
         uint vertexBufferID4;
+        uint vertexBufferID5;
+        uint vertexBufferID6;
+        uint vertexBufferID7;
+        uint vertexBufferID8;
+        
 
         int transID;
         int viewID;
@@ -40,6 +49,13 @@ namespace Graphics
         Texture tex3;
         Texture tex4;
 
+        Texture texSky1;
+        Texture texSky2;
+        Texture texSky3;
+        Texture texSky4;
+        Texture texSky5;
+        Texture texSky6;
+
         public void Initialize()
         {
             string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
@@ -51,7 +67,12 @@ namespace Graphics
             tex3 = new Texture(projectPath + "\\Textures\\stone.png", 3);
             tex4 = new Texture(projectPath + "\\Textures\\snow.jpg", 4);
 
-
+            texSky1 = new Texture(projectPath + "\\Textures\\bluecloud_bk.jpg", 1);
+            texSky2 = new Texture(projectPath + "\\Textures\\bluecloud_dn.jpg", 2);
+            texSky3 = new Texture(projectPath + "\\Textures\\bluecloud_ft.jpg", 3);
+            texSky4 = new Texture(projectPath + "\\Textures\\bluecloud_lf.jpg", 4);
+            texSky5 = new Texture(projectPath + "\\Textures\\bluecloud_rt.jpg", 5);
+            texSky6 = new Texture(projectPath + "\\Textures\\bluecloud_up.jpg", 6);
 
             Gl.glClearColor(0, 0, 0.4f, 1);
 
@@ -89,12 +110,174 @@ namespace Graphics
             };
 
 
-           
+            //SKYBOX COORDS
+            float[] sky1 = {
+                 10.0f, 10.0f, -10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 -10.0f, -10.0f, -10.0f,//2
+                 0,0,1,
+                 1,1,
+
+                -10.0f, 10.0f, -10.0f,
+                 0,0,1,
+                 1,0,
+
+                 10.0f, -10.0f, -10.0f,
+                 0,0,1,
+                 0,1,
+
+                10.0f, 10.0f, -10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 -10.0f, -10.0f, -10.0f,//2
+                 0,0,1,
+                 1,1
+            };
+            float[] sky2 = {
+                -10.0f, -5.0f, 10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 10.0f, -5.0f, -10.0f,//2
+                 0,0,1,
+                 1,1,
+
+                -10.0f, -5.0f, -10.0f,
+                 0,0,1,
+                 1,0,
+
+                 10.0f, -5.0f, 10.0f,
+                 0,0,1,
+                 0,1,
+
+                -10.0f, -5.0f, 10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 10.0f, -5.0f, -10.0f,//2
+                 0,0,1,
+                 1,1
+            };
+            float[] sky3 = {
+                10.0f, -10.0f, 10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 -10.0f, 10.0f, 10.0f,//2
+                 0,0,1,
+                 1,1,
+
+                -10.0f, -10.0f, 10.0f,
+                 0,0,1,
+                 1,0,
+
+                 10.0f, 10.0f, 10.0f,
+                 0,0,1,
+                 0,1,
+
+                10.0f, -10.0f, 10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 -10.0f, 10.0f, 10.0f,//2
+                 0,0,1,
+                 1,1
+            };
+            float[] sky4 = {
+                -10.0f, -10.0f,10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 -10.0f, 10.0f, -10.0f,//2
+                 0,0,1,
+                 1,1,
+
+                -10.0f,10.0f, 10.0f,
+                 0,0,1,
+                 1,0,
+
+                 10.0f, -10.0f, 10.0f,
+                 0,0,1,
+                 0,1,
+
+                -10.0f, -10.0f,10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 -10.0f, 10.0f, -10.0f,//2
+                 0,0,1,
+                 1,1
+            };
+            float[] sky5 = {
+                10.0f, 10.0f,10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 10.0f, -10.0f, -10.0f,//2
+                 0,0,1,
+                 1,1,
+
+                10.0f,10.0f, -10.0f,
+                 0,0,1,
+                 1,0,
+
+                 10.0f, -10.0f, 10.0f,
+                 0,0,1,
+                 0,1,
+
+                10.0f, 10.0f,10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 10.0f, -10.0f, -10.0f,//2
+                 0,0,1,
+                 1,1
+            };
+
+            float[] sky6 = {
+                10.0f, 10.0f, 10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 -105.0f, 10.0f, -10.0f,//2
+                 0,0,1,
+                 1,1,
+
+                -10.0f, 10.0f, 10.0f,
+                 0,0,1,
+                 1,0,
+
+                 10.0f, 10.0f, -10.0f,
+                 0,0,1,
+                 0,1,
+
+                10.0f, 10.0f, 10.0f,//1
+                 0,0,1,
+                 0,0,
+
+                 -105.0f, 10.0f, -10.0f,//2
+                 0,0,1,
+                 1,1
+            };
+            //END
 
             vertexBufferID1 = GPU.GenerateBuffer(sand_Arr);
-            vertexBufferID2 = GPU.GenerateBuffer(grass_Arr);
-            vertexBufferID3 = GPU.GenerateBuffer(rock_Arr);
-            vertexBufferID4 = GPU.GenerateBuffer(snow_Arr);
+            vertexBufferID20 = GPU.GenerateBuffer(grass_Arr);
+            vertexBufferID30 = GPU.GenerateBuffer(rock_Arr);
+            vertexBufferID40 = GPU.GenerateBuffer(snow_Arr);
+
+            //SKYBOX BUFFERS
+            vertexBufferID3 = GPU.GenerateBuffer(sky1);
+            vertexBufferID4 = GPU.GenerateBuffer(sky2);
+            vertexBufferID5 = GPU.GenerateBuffer(sky3);
+            vertexBufferID6 = GPU.GenerateBuffer(sky4);
+            vertexBufferID7 = GPU.GenerateBuffer(sky5);
+            vertexBufferID8 = GPU.GenerateBuffer(sky6);
+            
+            //END
 
             scaleMat = glm.scale(new mat4(1),new vec3(2f, 2f, 2.0f));
 
@@ -128,7 +311,7 @@ namespace Graphics
 
 
             tex2.Bind();
-            GPU.BindBuffer(vertexBufferID2);
+            GPU.BindBuffer(vertexBufferID20);
             Gl.glEnableVertexAttribArray(0);
 
             Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 0, IntPtr.Zero);
@@ -136,14 +319,14 @@ namespace Graphics
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, grass_size);
 
             tex3.Bind();
-            GPU.BindBuffer(vertexBufferID3);
+            GPU.BindBuffer(vertexBufferID30);
             Gl.glEnableVertexAttribArray(0);
             Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 0, IntPtr.Zero);
 
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, rock_size);
 
             tex4.Bind();
-            GPU.BindBuffer(vertexBufferID4);
+            GPU.BindBuffer(vertexBufferID40);
             Gl.glEnableVertexAttribArray(0);
             Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 0, IntPtr.Zero);
 
@@ -157,7 +340,80 @@ namespace Graphics
 
             //tex1.Bind();
 
+            //SKYBOX BINDING
+            GPU.BindBuffer(vertexBufferID3);
+            Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
 
+            texSky1.Bind();
+            Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, 6);
+
+
+            GPU.BindBuffer(vertexBufferID4);
+            Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
+
+            texSky2.Bind();
+            Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, 6);
+
+
+            GPU.BindBuffer(vertexBufferID5);
+            Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
+
+            texSky3.Bind();
+            Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, 6);
+
+
+            GPU.BindBuffer(vertexBufferID6);
+            Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
+
+            texSky4.Bind();
+            Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, 6);
+
+
+            GPU.BindBuffer(vertexBufferID7);
+            Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
+
+            texSky5.Bind();
+            Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, 6);
+
+
+            GPU.BindBuffer(vertexBufferID8);
+            Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
+
+            texSky6.Bind();
+            Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, 6);
+
+
+            //END BINDING
 
             Gl.glDisableVertexAttribArray(0);
             Gl.glDisableVertexAttribArray(1);
