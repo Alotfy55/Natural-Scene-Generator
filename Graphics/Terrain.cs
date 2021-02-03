@@ -11,31 +11,37 @@ namespace Graphics
     {
 
         public Bitmap heightMap;
-        int [,] terrain;
+        int[,] terrain;
 
         float[] sand_Arr;
         float[] grass_Arr;
         float[] rock_Arr;
         float[] snow_Arr;
 
-        int initI, initJ;
+        public int initI, initJ;
 
         public Terrain(String path)
         {
             heightMap = new Bitmap(path);
-            terrain = new int [(3*heightMap.Height / 4) - (heightMap.Height /4) , (3*heightMap.Width / 4) - (heightMap.Width / 4)];
+            terrain = new int[(3 * heightMap.Height / 4) - (heightMap.Height / 4), (3 * heightMap.Width / 4) - (heightMap.Width / 4)];
             initI = heightMap.Height / 4;
             initJ = heightMap.Width / 4;
-            for (int i = heightMap.Height / 4; i < 3*heightMap.Height/4; i++)
+            /*for (int i = heightMap.Height / 4; i < 3 * heightMap.Height / 4; i++)
             {
-                for (int j = heightMap.Width / 4; j < 3*heightMap.Width/4; j++)
+                for (int j = heightMap.Width / 4; j < 3 * heightMap.Width / 4; j++)
                 {
-                    terrain[i - initI, j - initJ] = heightMap.GetPixel(i,j).G;
+                    terrain[i - initI, j - initJ] = heightMap.GetPixel(i, j).G;
                 }
             }
-            
+            */
+            for (int i = 0; i < initI; i++)
+            {
+                for (int j = 0; j < initJ; j++)
+                {
+                    terrain[i, j] = heightMap.GetPixel(i, j).G;
+                }
+            }
 
-            
         }
 
         public void mapToArray()
@@ -51,12 +57,12 @@ namespace Graphics
             Texture_List.Add(snow_list);
             //List<float> colors_list = new List<float>();
             //float[,] Color_Array = { {237/255f ,201 / 255f, 175 / 255f },{126 / 255f, 200 / 255f, 80 / 255f },{90 / 255f, 77 / 255f, 65 / 255f },{224 / 255f, 247 / 255f, 250 / 255f } };
-            for (int i = 0; i < (heightMap.Height / 2) -1; i++)
+            for (int i = 0; i < initI - 1; i++)
             {
-                for (int j = 0; j < (heightMap.Width/2) -1 ; j++)
+                for (int j = 0; j < initJ - 1; j++)
                 {
                     int choice = fillTexture(terrain[i, j]);
-                    add_Index(Texture_List[choice],i,j);
+                    add_Index(Texture_List[choice], i, j);
 
                 }
             }
@@ -76,7 +82,7 @@ namespace Graphics
             else if (height / 255 <= 0.5)
             {
                 choice = 1;
-            }   
+            }
             else if (height / 255 <= 0.7)
             {
                 choice = 2;
@@ -87,12 +93,18 @@ namespace Graphics
             }
             return choice;
         }
-        void add_Index(List<float> indices_list, int i , int j)
+        void add_Index(List<float> indices_list, int i, int j)
         {
             // Original point
             indices_list.Add(i);
             indices_list.Add(terrain[i, j]);
             indices_list.Add(j);
+            indices_list.Add(0);
+            indices_list.Add(0);
+            indices_list.Add(0);
+
+            indices_list.Add(0);
+            indices_list.Add(0);
 
 
 
@@ -100,6 +112,12 @@ namespace Graphics
             indices_list.Add(i + 1);
             indices_list.Add(terrain[i + 1, j]);
             indices_list.Add(j);
+            indices_list.Add(0);
+            indices_list.Add(0);
+            indices_list.Add(0);
+
+            indices_list.Add(1);
+            indices_list.Add(0);
 
 
 
@@ -107,6 +125,12 @@ namespace Graphics
             indices_list.Add(i + 1);
             indices_list.Add(terrain[i + 1, j + 1]);
             indices_list.Add(j + 1);
+            indices_list.Add(0);
+            indices_list.Add(0);
+            indices_list.Add(0);
+
+            indices_list.Add(1);
+            indices_list.Add(1);
 
 
 
@@ -114,6 +138,12 @@ namespace Graphics
             indices_list.Add(i);
             indices_list.Add(terrain[i, j]);
             indices_list.Add(j);
+            indices_list.Add(0);
+            indices_list.Add(0);
+            indices_list.Add(0);
+
+            indices_list.Add(0);
+            indices_list.Add(0);
 
 
             // Down point
@@ -121,6 +151,12 @@ namespace Graphics
             indices_list.Add(i);
             indices_list.Add(terrain[i, j + 1]);
             indices_list.Add(j + 1);
+            indices_list.Add(0);
+            indices_list.Add(0);
+            indices_list.Add(0);
+
+            indices_list.Add(0);
+            indices_list.Add(1);
 
 
             // Down Right point
@@ -128,6 +164,12 @@ namespace Graphics
             indices_list.Add(i + 1);
             indices_list.Add(terrain[i + 1, j + 1]);
             indices_list.Add(j + 1);
+            indices_list.Add(0);
+            indices_list.Add(0);
+            indices_list.Add(0);
+
+            indices_list.Add(1);
+            indices_list.Add(1);
 
         }
         public float[] get_sand_Arr()

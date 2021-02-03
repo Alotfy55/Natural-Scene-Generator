@@ -18,7 +18,7 @@ namespace Graphics
         uint vertexBufferID30;
         uint vertexBufferID40;
 
-        
+
         uint vertexBufferID2;
         uint vertexBufferID3;
         uint vertexBufferID4;
@@ -26,7 +26,7 @@ namespace Graphics
         uint vertexBufferID6;
         uint vertexBufferID7;
         uint vertexBufferID8;
-        
+
 
         int transID;
         int viewID;
@@ -79,7 +79,7 @@ namespace Graphics
             Terrain terrain = new Terrain(projectPath + "\\Textures\\noise_simplex.png");
 
             terrain.mapToArray();
-            
+
             //indices_size = (terrain.heightMap.Height-1)*(terrain.heightMap.Width-1)*18;
             //indices_size = terrain_indices.Count();
             //float[] terrain_colors = terrain.get_color_array();
@@ -137,114 +137,114 @@ namespace Graphics
                  1,1
             };
             float[] sky2 = {
-                -10.0f, -5.0f, 10.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 10.0f, -5.0f, -10.0f,//2
+                -10.0f, -10.0f, 10.0f,//1
                  0,0,1,
                  1,1,
 
-                -10.0f, -5.0f, -10.0f,
-                 0,0,1,
-                 1,0,
-
-                 10.0f, -5.0f, 10.0f,
-                 0,0,1,
-                 0,1,
-
-                -10.0f, -5.0f, 10.0f,//1
+                 10.0f, -10.0f, -10.0f,//2
                  0,0,1,
                  0,0,
 
-                 10.0f, -5.0f, -10.0f,//2
+                -10.0f, -10.0f, -10.0f,
                  0,0,1,
-                 1,1
+                 1,0,
+
+                 10.0f, -10.0f, 10.0f,
+                 0,0,1,
+                 0,1,
+
+                -10.0f, -10.0f, 10.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 10.0f, -10.0f, -10.0f,//2
+                 0,0,1,
+                 0,0
             };
             float[] sky3 = {
-                10.0f, -10.0f, 10.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 -10.0f, 10.0f, 10.0f,//2
+                -10.0f, -10.0f, 10.0f,//1
                  0,0,1,
                  1,1,
 
-                -10.0f, -10.0f, 10.0f,
-                 0,0,1,
-                 1,0,
-
-                 10.0f, 10.0f, 10.0f,
-                 0,0,1,
-                 0,1,
-
-                10.0f, -10.0f, 10.0f,//1
+                 10.0f, 10.0f, 10.0f,//2
                  0,0,1,
                  0,0,
 
-                 -10.0f, 10.0f, 10.0f,//2
+                10.0f, -10.0f, 10.0f,
                  0,0,1,
-                 1,1
+                 0,1,
+
+                 -10.0f, 10.0f, 10.0f,
+                 0,0,1,
+                 1,0,
+
+                -10.0f, -10.0f, 10.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 10.0f, 10.0f, 10.0f,//2
+                 0,0,1,
+                 0,0
             };
             float[] sky4 = {
-                -10.0f, -10.0f,10.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 -10.0f, 10.0f, -10.0f,//2
+                -10.0f, 10.0f,10.0f,//1
                  0,0,1,
                  1,1,
 
-                -10.0f,10.0f, 10.0f,
-                 0,0,1,
-                 1,0,
-
-                 10.0f, -10.0f, 10.0f,
-                 0,0,1,
-                 0,1,
-
-                -10.0f, -10.0f,10.0f,//1
+                 -10.0f, -10.0f, -10.0f,//2
                  0,0,1,
                  0,0,
 
-                 -10.0f, 10.0f, -10.0f,//2
+                -10.0f,-10.0f, 10.0f,
                  0,0,1,
-                 1,1
+                 1,0,
+
+                 -10.0f, 10.0f, -10.0f,
+                 0,0,1,
+                 0,1,
+
+                -10.0f, 10.0f,10.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 -10.0f, -10.0f, -10.0f,//2
+                 0,0,1,
+                 0,0
             };
             float[] sky5 = {
-                10.0f, 10.0f,10.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 10.0f, -10.0f, -10.0f,//2
+                10.0f, 10.0f,-10.0f,//1
                  0,0,1,
                  1,1,
 
-                10.0f,10.0f, -10.0f,
-                 0,0,1,
-                 1,0,
-
-                 10.0f, -10.0f, 10.0f,
-                 0,0,1,
-                 0,1,
-
-                10.0f, 10.0f,10.0f,//1
+                 10.0f, -10.0f, 10.0f,//2
                  0,0,1,
                  0,0,
 
-                 10.0f, -10.0f, -10.0f,//2
+                10.0f,10.0f, 10.0f,
                  0,0,1,
-                 1,1
+                 0,1,
+
+                 10.0f, -10.0f, -10.0f,
+                 0,0,1,
+                 1,0,
+
+                10.0f, 10.0f,-10.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 10.0f, -10.0f, 10.0f,//2
+                 0,0,1,
+                 0,0
             };
 
             float[] sky6 = {
                 10.0f, 10.0f, 10.0f,//1
                  0,0,1,
-                 0,0,
-
-                 -105.0f, 10.0f, -10.0f,//2
-                 0,0,1,
                  1,1,
+
+                 -10.0f, 10.0f, -10.0f,//2
+                 0,0,1,
+                 0,0,
 
                 -10.0f, 10.0f, 10.0f,
                  0,0,1,
@@ -256,11 +256,11 @@ namespace Graphics
 
                 10.0f, 10.0f, 10.0f,//1
                  0,0,1,
-                 0,0,
+                 1,1,
 
-                 -105.0f, 10.0f, -10.0f,//2
+                 -10.0f, 10.0f, -10.0f,//2
                  0,0,1,
-                 1,1
+                 0,0
             };
             //END
 
@@ -276,10 +276,10 @@ namespace Graphics
             vertexBufferID6 = GPU.GenerateBuffer(sky4);
             vertexBufferID7 = GPU.GenerateBuffer(sky5);
             vertexBufferID8 = GPU.GenerateBuffer(sky6);
-            
+
             //END
 
-            scaleMat = glm.scale(new mat4(1),new vec3(2f, 2f, 2.0f));
+            scaleMat = glm.scale(new mat4(1), new vec3(2f, 2f, 2.0f));
 
             cam = new Camera();
 
@@ -296,49 +296,67 @@ namespace Graphics
         {
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
             sh.UseShader();
-
+            
             Gl.glUniformMatrix4fv(transID, 1, Gl.GL_FALSE, scaleMat.to_array());
             Gl.glUniformMatrix4fv(projID, 1, Gl.GL_FALSE, ProjectionMatrix.to_array());
             Gl.glUniformMatrix4fv(viewID, 1, Gl.GL_FALSE, ViewMatrix.to_array());
 
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            tex1.Bind();
+            //DRAWING SAND//
+            
             GPU.BindBuffer(vertexBufferID1);
             Gl.glEnableVertexAttribArray(0);
-            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 0, IntPtr.Zero);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
 
+            tex1.Bind();
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, sand_size);
 
+            //DRAWING GRASS//
 
-            tex2.Bind();
             GPU.BindBuffer(vertexBufferID20);
             Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
 
-            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 0, IntPtr.Zero);
-
+            tex2.Bind();
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, grass_size);
 
-            tex3.Bind();
+            //DRAWING ROCK//
+
             GPU.BindBuffer(vertexBufferID30);
             Gl.glEnableVertexAttribArray(0);
-            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 0, IntPtr.Zero);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
 
+
+            tex3.Bind();
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, rock_size);
 
-            tex4.Bind();
+            //DRAWING SNOW//
+
             GPU.BindBuffer(vertexBufferID40);
             Gl.glEnableVertexAttribArray(0);
-            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 0, IntPtr.Zero);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
 
+
+            tex4.Bind();
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, snow_size);
 
-
-            //Gl.glEnableVertexAttribArray(1);
-            //Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
-            //Gl.glEnableVertexAttribArray(2);
-            //Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
-
-            //tex1.Bind();
 
             //SKYBOX BINDING
             GPU.BindBuffer(vertexBufferID3);
@@ -415,9 +433,9 @@ namespace Graphics
 
             //END BINDING
 
-            Gl.glDisableVertexAttribArray(0);
-            Gl.glDisableVertexAttribArray(1);
-            Gl.glDisableVertexAttribArray(2);
+            //Gl.glDisableVertexAttribArray(0);
+            //Gl.glDisableVertexAttribArray(1);
+            //Gl.glDisableVertexAttribArray(2);
         }
         public void Update()
         {
