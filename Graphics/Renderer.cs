@@ -17,9 +17,9 @@ namespace Graphics
         uint vertexBufferID20;
         uint vertexBufferID30;
         uint vertexBufferID40;
+        uint vertexBufferID50;
 
 
-        uint vertexBufferID2;
         uint vertexBufferID3;
         uint vertexBufferID4;
         uint vertexBufferID5;
@@ -35,6 +35,10 @@ namespace Graphics
         int grass_size;
         int rock_size;
         int snow_size;
+        int water7_size;
+        float Time=0;
+
+        float waveAmplitude = 2;
 
         mat4 scaleMat;
 
@@ -48,6 +52,7 @@ namespace Graphics
         Texture tex2;
         Texture tex3;
         Texture tex4;
+        Texture tex5;
 
         Texture texSky1;
         Texture texSky2;
@@ -56,6 +61,12 @@ namespace Graphics
         Texture texSky5;
         Texture texSky6;
 
+        float[] sand_Arr;
+        float[] grass_Arr;
+        float[] rock_Arr;
+        float[] snow_Arr;
+        float[] water7;
+        Terrain terrain;
         public void Initialize()
         {
             string projectPath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName;
@@ -66,6 +77,8 @@ namespace Graphics
             tex2 = new Texture(projectPath + "\\Textures\\grass.jpg", 2);
             tex3 = new Texture(projectPath + "\\Textures\\stone.png", 3);
             tex4 = new Texture(projectPath + "\\Textures\\snow.jpg", 4);
+            tex5 = new Texture(projectPath + "\\Textures\\water3.jpg", 5);
+            
 
             texSky1 = new Texture(projectPath + "\\Textures\\bluecloud_bk.jpg", 1);
             texSky2 = new Texture(projectPath + "\\Textures\\bluecloud_dn.jpg", 2);
@@ -76,7 +89,7 @@ namespace Graphics
 
             Gl.glClearColor(0, 0, 0.4f, 1);
 
-            Terrain terrain = new Terrain(projectPath + "\\Textures\\noise_simplex.png");
+            terrain = new Terrain(projectPath + "\\Textures\\noise_simplex.png");
 
             terrain.mapToArray();
 
@@ -84,15 +97,18 @@ namespace Graphics
             //indices_size = terrain_indices.Count();
             //float[] terrain_colors = terrain.get_color_array();
 
-            float[] sand_Arr = terrain.get_sand_Arr();
-            float[] grass_Arr = terrain.get_grass_Arr();
-            float[] rock_Arr = terrain.get_rock_Arr();
-            float[] snow_Arr = terrain.get_snow_Arr();
+            sand_Arr = terrain.get_sand_Arr();
+            grass_Arr = terrain.get_grass_Arr();
+            rock_Arr = terrain.get_rock_Arr();
+            snow_Arr = terrain.get_snow_Arr();
+            water7 = terrain.get_water7_Arr();
+
             sand_size = sand_Arr.Count();
             grass_size = grass_Arr.Count();
             rock_size = rock_Arr.Count();
             snow_size = snow_Arr.Count();
-
+            water7_size = water7.Count();
+            
 
             float[] verts = {
                 -1.0f, -1.0f, 0.0f,
@@ -268,6 +284,7 @@ namespace Graphics
             vertexBufferID20 = GPU.GenerateBuffer(grass_Arr);
             vertexBufferID30 = GPU.GenerateBuffer(rock_Arr);
             vertexBufferID40 = GPU.GenerateBuffer(snow_Arr);
+            vertexBufferID50 = GPU.GenerateBuffer(water7);
 
             //SKYBOX BUFFERS
             vertexBufferID3 = GPU.GenerateBuffer(sky1);
@@ -294,13 +311,25 @@ namespace Graphics
 
         public void Draw()
         {
+            if (Time % 25 == 0)
+            {
+                for (int i = 0; i < water7_size / 8; i++)
+                {
+                    water7[i * 8 + 1] = terrain.water_level;
+                    water7[i * 8 + 1] += (float)(Math.Sin(Time * water7[i * 8]) + Math.Cos(Time * water7[i * 8 + 2])) * waveAmplitude;
+
+                }
+            }
+            Time++;
+
+            vertexBufferID50 = GPU.GenerateBuffer(water7);
             Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
             sh.UseShader();
             
             Gl.glUniformMatrix4fv(transID, 1, Gl.GL_FALSE, scaleMat.to_array());
             Gl.glUniformMatrix4fv(projID, 1, Gl.GL_FALSE, ProjectionMatrix.to_array());
             Gl.glUniformMatrix4fv(viewID, 1, Gl.GL_FALSE, ViewMatrix.to_array());
-
+            
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
             //DRAWING SAND//
@@ -357,6 +386,21 @@ namespace Graphics
             tex4.Bind();
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, snow_size);
 
+            //DRAWING WATER//
+           // Gl.glEnable(Gl.GL_BLEND);
+            //Gl.glBlendFunc(Gl.GL_SRC_ALPHA,Gl.GL_ONE_MINUS_SRC_ALPHA);
+            GPU.BindBuffer(vertexBufferID50);
+            Gl.glEnableVertexAttribArray(0);
+            Gl.glVertexAttribPointer(0, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), IntPtr.Zero);
+            Gl.glEnableVertexAttribArray(1);
+            Gl.glVertexAttribPointer(1, 3, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(3 * sizeof(float)));
+            Gl.glEnableVertexAttribArray(2);
+            Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
+
+
+            tex5.Bind();
+            Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, water7_size);
+           // Gl.glDisable(Gl.GL_BLEND);
 
             //SKYBOX BINDING
             GPU.BindBuffer(vertexBufferID3);
@@ -433,9 +477,9 @@ namespace Graphics
 
             //END BINDING
 
-            //Gl.glDisableVertexAttribArray(0);
-            //Gl.glDisableVertexAttribArray(1);
-            //Gl.glDisableVertexAttribArray(2);
+            Gl.glDisableVertexAttribArray(0);
+            Gl.glDisableVertexAttribArray(1);
+            Gl.glDisableVertexAttribArray(2);
         }
         public void Update()
         {
