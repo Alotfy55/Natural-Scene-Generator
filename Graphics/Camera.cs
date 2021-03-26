@@ -21,9 +21,9 @@ namespace Graphics
 
         public Camera()
         {
-            Reset(500, 300, 500, 0, 0, 0, 0, -1, 0);
+            Reset(1365, 400, 1365, 0, 0, 0, 0, -1, 0);
 
-            SetProjectionMatrix(45, 4 / 3, 0.1f, 500);
+            SetProjectionMatrix(45, 4 / 3, 0.1f, 2000);
 
         }
 
@@ -87,17 +87,28 @@ namespace Graphics
             mAngleY += angleDegrees;
         }
 
-        public void Walk(float dist)
+        public void Walk(float dist, float height)
         {
             mPosition += dist * mDirection;
+           //setHeight(height);
         }
-        public void Strafe(float dist)
+        public void Strafe(float dist, float height)
         {
             mPosition += dist * mRight;
+            //setHeight(height);
+        }
+        public void setHeight(float height)
+        {
+            
+            mPosition.y = height;
         }
         public void Fly(float dist)
         {
             mPosition += dist * mUp;
+        }
+        public vec3 Get_mPosition() 
+        {
+            return mPosition;
         }
     }
 }

@@ -42,7 +42,7 @@
             this.simpleOpenGlControl1.ColorBits = ((byte)(32));
             this.simpleOpenGlControl1.DepthBits = ((byte)(16));
             this.simpleOpenGlControl1.Location = new System.Drawing.Point(0, 0);
-            this.simpleOpenGlControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.simpleOpenGlControl1.Margin = new System.Windows.Forms.Padding(2);
             this.simpleOpenGlControl1.Name = "simpleOpenGlControl1";
             this.simpleOpenGlControl1.Size = new System.Drawing.Size(1096, 762);
             this.simpleOpenGlControl1.StencilBits = ((byte)(0));
@@ -57,7 +57,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1098, 763);
             this.Controls.Add(this.simpleOpenGlControl1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GraphicsForm";
             this.Text = "Graphics";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GraphicsForm_FormClosing);

@@ -51,13 +51,13 @@ namespace Graphics
             float speed = 10f;
             float angle = 1;
             if (e.KeyChar == 'a')
-                renderer.cam.Strafe(-speed);
+                renderer.cam.Strafe(-speed, renderer.terrain.get_height(renderer.cam.Get_mPosition().x, renderer.cam.Get_mPosition().z));          
             if (e.KeyChar == 'd')
-                renderer.cam.Strafe(speed);
+                renderer.cam.Strafe(speed, renderer.terrain.get_height(renderer.cam.Get_mPosition().x, renderer.cam.Get_mPosition().z));
             if (e.KeyChar == 's')
-                renderer.cam.Walk(-speed);
+                renderer.cam.Walk(-speed, renderer.terrain.get_height(renderer.cam.Get_mPosition().x, renderer.cam.Get_mPosition().z));
             if (e.KeyChar == 'w')
-                renderer.cam.Walk(speed);
+                renderer.cam.Walk(speed, renderer.terrain.get_height(renderer.cam.Get_mPosition().x, renderer.cam.Get_mPosition().z));
             if (e.KeyChar == 'z')
                 renderer.cam.Fly(-speed);
             if (e.KeyChar == 'c')
