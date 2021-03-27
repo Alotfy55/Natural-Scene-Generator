@@ -21,9 +21,9 @@ namespace Graphics
 
         public Camera()
         {
-            Reset(1365, 400, 1365, 0, 0, 0, 0, -1, 0);
+            Reset(800, 800, 800, 0, 0, 0, 0, -1, 0);
 
-            SetProjectionMatrix(45, 4 / 3, 0.1f, 2000);
+            SetProjectionMatrix(45, 4 / 3, 0.1f, 3000);
 
         }
 

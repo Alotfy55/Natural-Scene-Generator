@@ -12,24 +12,27 @@ namespace Graphics
     {
 
         public Bitmap heightMap;
-        //int[,] terrain;
 
         float[] sand_Arr;
         float[] grass_Arr;
         float[] rock_Arr;
         float[] snow_Arr;
         float[] water7;
+        int MAP_SCALE = 3;
         public int water_level = 39;
         //vec3[] Water7;
 
-        public int initI, initJ;
+        public int sizeW, sizeH;
 
         public Terrain(String path)
         {
             heightMap = new Bitmap(path);
-            //terrain = new int[(3 * heightMap.Height / 4) - (heightMap.Height / 4), (3 * heightMap.Width / 4) - (heightMap.Width / 4)];
-            initI = heightMap.Height / 4;
-            initJ = heightMap.Width / 4;
+
+            water_level *= MAP_SCALE;
+
+            sizeH = heightMap.Height / 4;
+            sizeW = heightMap.Width / 4;
+
             List<List<float>> Texture_List = new List<List<float>>();
             List<float> sand_list = new List<float>();
             List<float> grass_list = new List<float>();
@@ -41,9 +44,10 @@ namespace Graphics
             Texture_List.Add(rock_list);
             Texture_List.Add(snow_list);
             Texture_List.Add(water_list);
-            for (int i = 0; i < heightMap.Height/3; i++)
+
+            for (int i = 0; i < sizeH; i++)
             {
-                for (int j = 0; j < heightMap.Width/3; j++)
+                for (int j = 0; j < sizeW; j++)
                 {
                     int choice = fillTexture(heightMap.GetPixel(i, j).G);
                     if (choice == 4)
@@ -62,24 +66,7 @@ namespace Graphics
             rock_Arr = rock_list.ToArray();
             snow_Arr = snow_list.ToArray();
             water7 = water_list.ToArray();
-            //for (int i = heightMap.Height / 4; i < 3 * heightMap.Height / 4; i++)
-            //{
-            //    for (int j = heightMap.Width / 4; j < 3 * heightMap.Width / 4; j++)
-            //    {
-            //        terrain[i - initI, j - initJ] = heightMap.GetPixel(i, j).G;
-            //    }
-            //}
-            /*
-            for (int i = 0; i < initI; i++)
-            {
-                for (int j = 0; j < initJ; j++)
-                {
-                    terrain[i, j] = heightMap.GetPixel(i, j).G;
-                }
-            }
-            */
-            //List<float> colors_list = new List<float>();
-            //float[,] Color_Array = { {237/255f ,201 / 255f, 175 / 255f },{126 / 255f, 200 / 255f, 80 / 255f },{90 / 255f, 77 / 255f, 65 / 255f },{224 / 255f, 247 / 255f, 250 / 255f } };
+           
         }
 
         public int fillTexture(float height)
@@ -107,16 +94,19 @@ namespace Graphics
             }
             return choice;
         }
+
         void add_Index(List<float> indices_list, int i, int j,bool water)
         {
             // Original point
-            indices_list.Add(i);
+            
+
+            indices_list.Add(i * MAP_SCALE);
             if(!water)
-                indices_list.Add(heightMap.GetPixel(i, j).G);
+                indices_list.Add(heightMap.GetPixel(i, j).G * MAP_SCALE);
             else
                 indices_list.Add(water_level);
 
-            indices_list.Add(j);
+            indices_list.Add(j * MAP_SCALE);
             indices_list.Add(0);
             indices_list.Add(0);
             indices_list.Add(0);
@@ -127,14 +117,14 @@ namespace Graphics
 
 
             // Right point
-            indices_list.Add(i + 1);
+            indices_list.Add((i + 1) * MAP_SCALE);
 
             if (!water)
-                indices_list.Add(heightMap.GetPixel(i+1, j).G);
+                indices_list.Add(heightMap.GetPixel(i+1, j).G * MAP_SCALE);
             else
                 indices_list.Add(water_level);
 
-            indices_list.Add(j);
+            indices_list.Add(j * MAP_SCALE);
             indices_list.Add(0);
             indices_list.Add(0);
             indices_list.Add(0);
@@ -145,14 +135,14 @@ namespace Graphics
 
 
             // Down Right point
-            indices_list.Add(i + 1);
+            indices_list.Add((i + 1) * MAP_SCALE);
 
             if (!water)
-                indices_list.Add(heightMap.GetPixel(i+1, j+1).G);
+                indices_list.Add(heightMap.GetPixel(i+1, j+1).G * MAP_SCALE);
             else
                 indices_list.Add(water_level);
 
-            indices_list.Add(j + 1);
+            indices_list.Add((j + 1) * MAP_SCALE);
             indices_list.Add(0);
             indices_list.Add(0);
             indices_list.Add(0);
@@ -163,12 +153,12 @@ namespace Graphics
 
 
             // Original point
-            indices_list.Add(i);
+            indices_list.Add(i * MAP_SCALE);
             if (!water)
-                indices_list.Add(heightMap.GetPixel(i, j).G);
+                indices_list.Add(heightMap.GetPixel(i, j).G * MAP_SCALE);
             else
                 indices_list.Add(water_level);
-            indices_list.Add(j);
+            indices_list.Add(j * MAP_SCALE);
             indices_list.Add(0);
             indices_list.Add(0);
             indices_list.Add(0);
@@ -179,12 +169,12 @@ namespace Graphics
 
             // Down point
 
-            indices_list.Add(i);
+            indices_list.Add(i * MAP_SCALE);
             if (!water)
-                indices_list.Add(heightMap.GetPixel(i, j+1).G);
+                indices_list.Add(heightMap.GetPixel(i, j+1).G * MAP_SCALE);
             else
                 indices_list.Add(water_level);
-            indices_list.Add(j + 1);
+            indices_list.Add((j + 1) * MAP_SCALE);
             indices_list.Add(0);
             indices_list.Add(0);
             indices_list.Add(0);
@@ -195,12 +185,12 @@ namespace Graphics
 
             // Down Right point
 
-            indices_list.Add(i + 1);
+            indices_list.Add((i + 1) * MAP_SCALE);
             if (!water)
-                indices_list.Add(heightMap.GetPixel(i+1, j+1).G);
+                indices_list.Add(heightMap.GetPixel(i+1, j+1).G * MAP_SCALE);
             else
                 indices_list.Add(water_level);
-            indices_list.Add(j + 1);
+            indices_list.Add((j + 1) * MAP_SCALE);
             indices_list.Add(0);
             indices_list.Add(0);
             indices_list.Add(0);
@@ -237,7 +227,7 @@ namespace Graphics
             else if (heightMap.GetPixel((int)x, (int)z).G < water_level)
                 return 45*2;
             else
-                return heightMap.GetPixel((int)x, (int)z).G * 2 ;// terrain[(int)x-initI, (int)z-initJ] + 10;
+                return heightMap.GetPixel((int)x, (int)z).G * 2 ;
         }
     }
 }

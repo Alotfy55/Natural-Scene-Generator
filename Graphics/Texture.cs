@@ -48,7 +48,7 @@ namespace Graphics
                 Gl.GL_UNSIGNED_BYTE, bitmapData.Scan0);
 
 
-
+            
             if (bitmap != null)
             {
                 bitmap.UnlockBits(bitmapData);

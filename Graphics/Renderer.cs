@@ -83,12 +83,12 @@ namespace Graphics
             tex5 = new Texture(projectPath + "\\Textures\\water3.jpg", 5);
             
 
-            texSky1 = new Texture(projectPath + "\\Textures\\bluecloud_bk.jpg", 1);
-            texSky2 = new Texture(projectPath + "\\Textures\\bluecloud_dn.jpg", 2);
-            texSky3 = new Texture(projectPath + "\\Textures\\bluecloud_ft.jpg", 3);
-            texSky4 = new Texture(projectPath + "\\Textures\\bluecloud_lf.jpg", 4);
-            texSky5 = new Texture(projectPath + "\\Textures\\bluecloud_rt.jpg", 5);
-            texSky6 = new Texture(projectPath + "\\Textures\\bluecloud_up.jpg", 6);
+            texSky1 = new Texture(projectPath + "\\Textures\\bluecloud_bk.jpg", 0);
+            texSky2 = new Texture(projectPath + "\\Textures\\bluecloud_dn.jpg", 0);
+            texSky3 = new Texture(projectPath + "\\Textures\\bluecloud_ft.jpg", 0);
+            texSky4 = new Texture(projectPath + "\\Textures\\bluecloud_lf.jpg", 0);
+            texSky5 = new Texture(projectPath + "\\Textures\\bluecloud_rt.jpg", 0);
+            texSky6 = new Texture(projectPath + "\\Textures\\bluecloud_up.jpg", 0);
 
             System.Media.SoundPlayer player = new System.Media.SoundPlayer(projectPath + "\\rainforesto.wav");
             player.PlayLooping();
@@ -132,159 +132,160 @@ namespace Graphics
             };
 
 
+
             //SKYBOX COORDS
             float[] sky1 = {
-                 -1080.0f, -1080.0f, -1080.0f,//1
+                 -3080.0f, -3080.0f, -3080.0f,//1
                  0,0,1,
                  1,1,
 
-                 1080.0f, 1080.0f, -1080.0f,//2
+                 3080.0f, 3080.0f, -3080.0f,//2
                  0,0,1,
                  0,0,
 
 
 
-                  1080.0f, -1080.0f, -1080.0f,
+                  3080.0f, -3080.0f, -3080.0f,
                  0,0,1,
                  0,1,
 
-                -1080.0f, 1080.0f, -1080.0f,
+                -3080.0f, 3080.0f, -3080.0f,
                  0,0,1,
                  1,0,
 
-                -1080.0f, -1080.0f, -1080.0f,//1
+                -3080.0f, -3080.0f, -3080.0f,//1
                  0,0,1,
                  1,1,
 
-                 1080.0f, 1080.0f, -1080.0f,//2
+                 3080.0f, 3080.0f, -3080.0f,//2
                  0,0,1,
                  0,0
             };
             float[] sky2 = {
-                1080.0f, -1080.0f, 1080.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 -1080.0f, -1080.0f, -1080.0f,//2
+                3080.0f, -3080.0f, 3080.0f,//1
                  0,0,1,
                  1,1,
 
-                -1080.0f, -1080.0f, 1080.0f,
-                 0,0,1,
-                 1,0,
-
-                 1080.0f, -1080.0f, -1080.0f,
-                 0,0,1,
-                 0,1,
-
-                1080.0f, -1080.0f, 1080.0f,//1
+                 -3080.0f, -3080.0f, -3080.0f,//2
                  0,0,1,
                  0,0,
 
-                 -1080.0f, -1080.0f, -1080.0f,//2
+                -3080.0f, -3080.0f, 3080.0f,
                  0,0,1,
-                 1,1
+                 0,1,
+
+                 3080.0f, -3080.0f, -3080.0f,
+                 0,0,1,
+                 1,0,
+
+                3080.0f, -3080.0f, 3080.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 -3080.0f, -3080.0f, -3080.0f,//2
+                 0,0,1,
+                 0,0
             };
             float[] sky3 = {
-                1080.0f, -1080.0f, 1080.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 -1080.0f, 1080.0f, 1080.0f,//2
+                3080.0f, -3080.0f, 3080.0f,//1
                  0,0,1,
                  1,1,
 
-                -1080.0f, -1080.0f, 1080.0f,
-                 0,0,1,
-                 1,0,
-
-                 1080.0f, 1080.0f, 1080.0f,
-                 0,0,1,
-                 0,1,
-
-                1080.0f, -1080.0f, 1080.0f,//1
+                 -3080.0f, 3080.0f, 3080.0f,//2
                  0,0,1,
                  0,0,
 
-                 -1080.0f, 1080.0f, 1080.0f,//2
+                -3080.0f, -3080.0f, 3080.0f,
                  0,0,1,
-                 1,1
+                 0,1,
+
+                 3080.0f, 3080.0f, 3080.0f,
+                 0,0,1,
+                 1,0,
+
+                3080.0f, -3080.0f, 3080.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 -3080.0f, 3080.0f, 3080.0f,//2
+                 0,0,1,
+                 0,0
             };
             float[] sky4 = {
-                -1080.0f, -1080.0f,1080.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 -1080.0f, 1080.0f, -1080.0f,//2
+                -3080.0f, -3080.0f,3080.0f,//1
                  0,0,1,
                  1,1,
 
-                -1080.0f,1080.0f, 1080.0f,
-                 0,0,1,
-                 1,0,
-
-                 -1080.0f, -1080.0f, -1080.0f,
-                 0,0,1,
-                 0,1,
-
-                -1080.0f, -1080.0f,1080.0f,//1
+                 -3080.0f, 3080.0f, -3080.0f,//2
                  0,0,1,
                  0,0,
 
-                 -1080.0f, 1080.0f, -1080.0f,//2
+                -3080.0f,3080.0f, 3080.0f,
                  0,0,1,
-                 1,1
+                 0,1,
+
+                 -3080.0f, -3080.0f, -3080.0f,
+                 0,0,1,
+                 1,0,
+
+                -3080.0f, -3080.0f,3080.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 -3080.0f, 3080.0f, -3080.0f,//2
+                 0,0,1,
+                 0,0
             };
             float[] sky5 = {
-                1080.0f, 1080.0f,1080.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 1080.0f, -1080.0f, -1080.0f,//2
+                3080.0f, 3080.0f,3080.0f,//1
                  0,0,1,
                  1,1,
 
-                1080.0f,1080.0f, -1080.0f,
-                 0,0,1,
-                 1,0,
-
-                 1080.0f, -1080.0f, 1080.0f,
-                 0,0,1,
-                 0,1,
-
-                1080.0f, 1080.0f,1080.0f,//1
+                 3080.0f, -3080.0f, -3080.0f,//2
                  0,0,1,
                  0,0,
 
-                 1080.0f, -1080.0f, -1080.0f,//2
+                3080.0f,3080.0f, -3080.0f,
                  0,0,1,
-                 1,1
+                 0,1,
+
+                 3080.0f, -3080.0f, 3080.0f,
+                 0,0,1,
+                 1,0,
+
+                3080.0f, 3080.0f,3080.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 3080.0f, -3080.0f, -3080.0f,//2
+                 0,0,1,
+                 0,0
             };
 
             float[] sky6 = {
-                1080.0f, 1080.0f, 1080.0f,//1
-                 0,0,1,
-                 0,0,
-
-                 -1080.0f, 1080.0f, -1080.0f,//2
+                3080.0f, 3080.0f, 3080.0f,//1
                  0,0,1,
                  1,1,
 
-                -1080.0f, 1080.0f, 1080.0f,
-                 0,0,1,
-                 1,0,
-
-                 1080.0f, 1080.0f, -1080.0f,
-                 0,0,1,
-                 0,1,
-
-                1080.0f, 1080.0f, 1080.0f,//1
+                 -3080.0f, 3080.0f, -3080.0f,//2
                  0,0,1,
                  0,0,
 
-                 -1080.0f, 1080.0f, -1080.0f,//2
+                -3080.0f, 3080.0f, 3080.0f,
                  0,0,1,
-                 1,1
+                 0,1,
+
+                 3080.0f, 3080.0f, -3080.0f,
+                 0,0,1,
+                 1,0,
+
+                3080.0f, 3080.0f, 3080.0f,//1
+                 0,0,1,
+                 1,1,
+
+                 -3080.0f, 3080.0f, -3080.0f,//2
+                 0,0,1,
+                 0,0
             };
             //END
 
@@ -333,13 +334,15 @@ namespace Graphics
             
 
             vertexBufferID50 = GPU.GenerateBuffer(water7);
-            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT);
+            Gl.glEnable(Gl.GL_DEPTH_TEST);
+            Gl.glClear(Gl.GL_COLOR_BUFFER_BIT | Gl.GL_DEPTH_BUFFER_BIT);
+           
             sh.UseShader();
             
             Gl.glUniformMatrix4fv(transID, 1, Gl.GL_FALSE, scaleMat.to_array());
             Gl.glUniformMatrix4fv(projID, 1, Gl.GL_FALSE, ProjectionMatrix.to_array());
             Gl.glUniformMatrix4fv(viewID, 1, Gl.GL_FALSE, ViewMatrix.to_array());
-
+            
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //SKYBOX BINDING
 
@@ -401,6 +404,7 @@ namespace Graphics
             Gl.glEnableVertexAttribArray(2);
             Gl.glVertexAttribPointer(2, 2, Gl.GL_FLOAT, Gl.GL_FALSE, 8 * sizeof(float), (IntPtr)(6 * sizeof(float)));
 
+            //Gl.glBindTexture();
             texSky5.Bind();
             Gl.glDrawArrays(Gl.GL_TRIANGLES, 0, 6);
 

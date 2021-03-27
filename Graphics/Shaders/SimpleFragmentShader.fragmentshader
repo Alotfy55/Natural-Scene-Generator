@@ -2,15 +2,27 @@
 
 in vec3 fragColor;
 in vec2 Tex;
+flat in int choice;
 
 out vec4 color;
 uniform sampler2D myTextureSampler;
+//uniform sampler2D myTextureSampler2;
 
 void main()
 {
 
 	//color = fragColor;
+	//if(choice == 0)
+		//color = texture(myTextureSampler,Tex).rgba;
+	//else if (choice == 1)
+	//	color = texture(myTextureSampler2,Tex).rgba;
+	//else if (choice == 2)
+	//	color = texture(myTextureSampler,Tex).rgba;
+	//else 
+	//	color = texture(myTextureSampler,Tex).rgba;
+
 	color = texture(myTextureSampler,Tex).rgba;
+
 	color.a = 0.55;
 
 }
