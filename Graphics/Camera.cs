@@ -110,5 +110,12 @@ namespace Graphics
         {
             return mPosition;
         }
+        public void set_mPosition(float x, float y, float z) 
+        {
+
+            mPosition.x = x;
+            mPosition.y = y;
+            mPosition.z = z;
+        }
     }
 }

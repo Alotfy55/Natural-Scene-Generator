@@ -77,10 +77,10 @@ namespace Graphics
             
 
             tex1 = new Texture(projectPath + "\\Textures\\sand.jpg", 1);
-            tex2 = new Texture(projectPath + "\\Textures\\grass.jpg", 2);
-            tex3 = new Texture(projectPath + "\\Textures\\stone.png", 3);
-            tex4 = new Texture(projectPath + "\\Textures\\snow.jpg", 4);
-            tex5 = new Texture(projectPath + "\\Textures\\Lotf.png", 5);
+            tex2 = new Texture(projectPath + "\\Textures\\grAss.png", 2);
+            tex3 = new Texture(projectPath + "\\Textures\\the_rock.png", 3);
+            tex4 = new Texture(projectPath + "\\Textures\\snow.png", 4);
+            tex5 = new Texture(projectPath + "\\Textures\\lotf2.png", 5);
             
 
             texSky1 = new Texture(projectPath + "\\Textures\\bluecloud_bk.jpg", 0);

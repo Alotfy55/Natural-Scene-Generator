@@ -70,6 +70,10 @@ namespace Graphics
                 renderer.cam.Pitch(-angle);
             if (e.KeyChar == 'g')
                 renderer.cam.Pitch(angle);
+
+            textBox1.Text = (renderer.cam.Get_mPosition().x).ToString();
+            textBox2.Text = (renderer.cam.Get_mPosition().y).ToString();
+            textBox3.Text = (renderer.cam.Get_mPosition().z).ToString();
         }
 
         float prevX, prevY;
@@ -97,6 +101,35 @@ namespace Graphics
         private void GraphicsForm_Load(object sender, System.EventArgs e)
         {
 
+        }
+
+        private void label1_Click(object sender, System.EventArgs e)
+        {
+            
+        }
+
+        private void textBox1_TextChanged(object sender, System.EventArgs e)
+        {
+            float x = float.Parse(textBox1.Text);
+            float y = renderer.cam.Get_mPosition().y;
+            float z = renderer.cam.Get_mPosition().z;
+            renderer.cam.set_mPosition(x,y,z);
+        }
+
+        private void textBox2_TextChanged(object sender, System.EventArgs e)
+        {
+            float y = float.Parse(textBox2.Text);
+            float x = renderer.cam.Get_mPosition().x;
+            float z = renderer.cam.Get_mPosition().z;
+            renderer.cam.set_mPosition(x, y, z);
+        }
+
+        private void textBox3_TextChanged(object sender, System.EventArgs e)
+        {
+            float z = float.Parse(textBox3.Text);
+            float y = renderer.cam.Get_mPosition().y;
+            float x = renderer.cam.Get_mPosition().x;
+            renderer.cam.set_mPosition(x, y, z);
         }
 
         private void MoveCursor()
