@@ -16,7 +16,7 @@ flat out int choice;
 void main(){
 
 	gl_Position =  projection*view*model * vec4(vertexPosition_modelspace,1);
-	if (gl_Position.y / 255 <= 0.25) 
+	/*if (gl_Position.y / 255 <= 0.25) 
             {
                 choice = 0;
             }
@@ -31,7 +31,7 @@ void main(){
             else
             {
                 choice = 3;
-            }
+            }*/
 	fragColor = vertexColor;
 	Tex = vertexTex;
 	

@@ -49,7 +49,7 @@ namespace Graphics
         private void simpleOpenGlControl1_KeyPress(object sender, KeyPressEventArgs e)
         {
             float speed = 10f;
-            float angle = 1;
+            float angle = 0.3f;
             if (e.KeyChar == 'a')
                 renderer.cam.Strafe(-speed, renderer.terrain.get_height(renderer.cam.Get_mPosition().x, renderer.cam.Get_mPosition().z));          
             if (e.KeyChar == 'd')
@@ -63,13 +63,13 @@ namespace Graphics
             if (e.KeyChar == 'c')
                 renderer.cam.Fly(speed);
             if (e.KeyChar == 'e')
-                renderer.cam.Yaw(-0.3f);
+                renderer.cam.Yaw(-angle);
             if (e.KeyChar == 'q')
-                renderer.cam.Yaw(0.3f);
+                renderer.cam.Yaw(angle);
             if (e.KeyChar == 't')
-                renderer.cam.Pitch(-0.3f);
+                renderer.cam.Pitch(-angle);
             if (e.KeyChar == 'g')
-                renderer.cam.Pitch(0.3f);
+                renderer.cam.Pitch(angle);
         }
 
         float prevX, prevY;

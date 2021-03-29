@@ -222,12 +222,12 @@ namespace Graphics
         public float get_height(float x , float z) 
         {
 
-            if (x < 0 || x > 2*heightMap.Height/3 || z > 2*heightMap.Width/3 || z < 0)
-                return 500;
+            if (x < 0 || x > 2*heightMap.Height/4 || z > 2*heightMap.Width/4 || z < 0)
+                return 500 * MAP_SCALE;
             else if (heightMap.GetPixel((int)x, (int)z).G < water_level)
-                return 45*2;
+                return 45*MAP_SCALE;
             else
-                return heightMap.GetPixel((int)x, (int)z).G * 2 ;
+                return heightMap.GetPixel((int)x, (int)z).G * MAP_SCALE;
         }
     }
 }
